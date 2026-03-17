@@ -2,19 +2,16 @@
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { PostDto } from "@/type/post";
+import { fetchApi } from "@/lib/client";
 
-export default function Home() {
+export default function Detail() {
 
     const [post, setPost] = useState<PostDto | null>(null);
     const { id } = useParams();
 
     useEffect(() => {
-        fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/posts/${id}`)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-                setPost(data);
-            });
+        fetchApi(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/posts/${id}`)
+            .then(data => setPost(data));
     }, []);
 
 
