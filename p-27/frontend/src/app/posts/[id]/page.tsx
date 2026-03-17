@@ -10,7 +10,7 @@ export default function Detail() {
     const { id } = useParams();
 
     useEffect(() => {
-        fetchApi(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/posts/${id}`)
+        fetchApi(`/api/v1/posts/${id}`)
             .then(data => setPost(data));
     }, []);
 
